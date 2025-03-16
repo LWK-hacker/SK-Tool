@@ -1,9 +1,9 @@
-<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SK Tools</title>
+    <title>SK Tool</title>
     <style>
         /* Hacker-style colors */
         body {
@@ -12,7 +12,7 @@
             font-family: 'Courier New', Courier, monospace;
             text-align: center;
             margin: 0;
-            overflow-y: auto; /* Allow vertical scrolling */
+            overflow-y: auto;
             height: 100vh;
         }
 
@@ -23,71 +23,74 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url('https://stock.adobe.com/search?k=hacker+background');
             background-size: cover;
             background-position: center;
             opacity: 0.1;
             z-index: -1;
         }
 
-        /* Title styling */
-        h1 {
-            font-size: 2em;
-            margin: 20px 0;
-            border: 2px solid #00ff00;
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: transparent;
-        }
-
-        /* Navigation buttons */
-        .nav-btn {
-            background-color: transparent;
-            color: #ff0000; /* Bright red color */
-            border: 2px solid #ff0000;
-            padding: 10px 15px;
-            font-size: 10px;
-            cursor: pointer;
-            position: absolute;
-            left: 10px;
-            top: 20px; /* Aligned with heading */
-        }
-
-        .settings-btn {
-            font-size: 24px;
-            color: #00ff00;
-            cursor: pointer;
-            position: absolute;
-            right: 10px;
-            top: 20px; /* Aligned with heading */
-        }
-
-        /* Dropdown settings */
-        .settings-menu {
-            display: none;
-            position: absolute;
-            right: 10px;
-            top: 60px;
+        /* Popup Box */
+        .popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
             background: #111;
-            padding: 10px;
-            border: 1px solid #00ff00;
-            text-align: left;
+            padding: 20px;
+            border: 2px solid #00ff00;
+            text-align: center;
+            display: none;
+            z-index: 100;
         }
 
-        .settings-menu a {
+        /* Close Button (X) */
+        .close-btn {
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #ff0000;
+            cursor: pointer;
+        }
+
+        .popup h2 {
+            color: #ff0000;
+            font-size: 18px;
+        }
+
+        .popup a {
+            display: block;
             color: #00ff00;
             text-decoration: none;
-            display: block;
-            margin: 5px 0;
+            font-size: 16px;
+            margin: 10px 0;
+            border: 2px solid #00ff00;
+            padding: 5px;
+            border-radius: 5px;
         }
 
-        /* Buttons container */
-        .btn-container {
-            margin-top: 50px;
-            padding-bottom: 20px; /* Ensure bottom spacing */
+        .popup label {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #00ff00;
+            font-size: 14px;
+            margin-top: 10px;
+            cursor: pointer;
         }
 
-        /* Rounded Buttons with Bold Text */
+        .popup input {
+            margin-right: 5px;
+        }
+
+        /* Hide main content until tasks are completed */
+        #main-content {
+            display: none;
+        }
+
+        /* Buttons */
         .btn {
             display: block;
             width: 200px;
@@ -96,76 +99,47 @@
             text-align: center;
             color: #00ff00;
             font-size: 18px;
-            font-weight: bold; /* Bold Text */
+            font-weight: bold;
             text-decoration: none;
             border: 2px solid #00ff00;
-            border-radius: 25px; /* Rounded Corners */
-            background-color: #ff0000; /* Solid red background */
+            border-radius: 25px;
+            background-color: #ff0000;
         }
-        
+
         .btn:hover {
             background-color: #00ff00;
             color: #000;
-        }
-
-        /* Background text */
-        .background-text {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: #00ff00;
-            font-size: 20px;
-            white-space: pre-wrap;
-            opacity: 0.1;
-            z-index: -1;
         }
     </style>
 </head>
 <body>
 
-    <!-- Background Overlay -->
+    <!-- Background -->
     <div class="background"></div>
 
-    <!-- Background Text -->
-    <div class="background-text">
-        Ks
-        Ss.  Jxxk djdj
-        Nddn
-        Kdhd
-        Sddndn
-        SKdndndn
-        Ks
-        K
+    <!-- Popup Box -->
+    <div class="popup" id="popup">
+        <span class="close-btn" onclick="closePopup()">✖</span>
+        <h2>First Complete Tasks Then You Can Start</h2>
+        <a href="https://whatsapp.com/channel/0029VagXoSB05MUf3KNDz627" target="_blank">Join Our WhatsApp</a>
+        <a href="https://www.instagram.com/kamran_brohi_72" target="_blank">Follow on Instagram</a>
     </div>
 
-    <!-- Exit Button -->
-    <button class="nav-btn" onclick="exitApp()">&lt;</button>
-
-    <!-- Settings Menu -->
-    <div class="settings-btn" onclick="toggleSettings()">&#8942;</div>
-    <div class="settings-menu" id="settingsMenu">
-        <a href="#">Home</a>
-        <a href="tel:03367027845">Contact: 03367027845</a>
-        <a href="#">Made BY: KAMRAN•BALOCH</a>
-        <a href="https://whatsapp.com/channel/0029VagXoSB05MUf3KNDz627" target="_blank">JOIN OUR WHATSAPP CHANNEL</a>
-    </div>
-
-    <!-- Title -->
-    <h1>SK Tools</h1>
-    <hr>
-<marquee behavior="scroll" direction="left" scrollamount="5" style="font-size: 18px; color: #00ff00; white-space: nowrap; margin-top: 10px;">
-   Welcome to SK Tools - This tool is Created by Kamran•Baloch
-</marquee>
-<marquee behavior="scroll" direction="right" scrollamount="5" style="font-size: 18px; color: #00ff00; white-space: nowrap; margin-top: 10px;">
-  خوش آمدید ایس۔کے ٹول میں یے ٹول کامران بلوچ نے بنایا ہے۔
-</marquee>
-<hr>
-    <!-- Buttons -->
-    <div class="btn-container">
-        <a href="https://Quran.com" target="_blank" class="btn">Read Quran</a>
-        <a href="https://paksimdatabse.com" target="_blank" class="btn">Sim details</a>
-        <a href="https://www.mediafire.com/file/i6dghyxuotugvml/Tiktok+For+You+Trick.pdf/file" target="_blank" class="btn">TikTok For You Trick</a>
+    <!-- Main Content -->
+    <div id="main-content">
+        <h1>SK Tools</h1>
+        <hr>
+        <marquee behavior="scroll" direction="left" scrollamount="5" style="font-size: 18px; color: #00ff00;">
+            Welcome to SK Tools - This tool is Created by Kamran•Baloch 14/3/2025
+        </marquee>
+        <marquee behavior="scroll" direction="right" scrollamount="5" style="font-size: 18px; color: #00ff00;">
+            ویلکم ایس کے ٹول۔میں یے ٹول کامران بروھی کا بنایا ہو ہے۔14/3/2025
+        </marquee>
+        <hr>
+        <div class="btn-container">
+            <a href="https://Quran.com" target="_blank" class="btn">Read Quran</a>
+            <a href="https://paksimdatabse.com" target="_blank" class="btn">Sim details</a>
+            <a href="https://www.mediafire.com/file/i6dghyxuotugvml/Tiktok+For+You+Trick.pdf/file" target="_blank" class="btn">TikTok For You Trick</a>
                 <a class="btn" href="https://youtu.be/L5Mi1bONwjE?si=dRjkUQFSrn5IdyXA" target="_blank">Unlimited fake WhatsApp numbers</a>
         <a class="btn" href="https://www.mediafire.com/file/f8shun6xzcnmy7k/WA_Number_Hide_By_AbheeBhai.zip/file" target="_blank">Whatsapp hide method</a>
         <a class="btn" href="https://www.mediafire.com/file/ytwzd2kk0efzzat/YouTube_4k_Watchtime_Methid_By_AbheeBhai_Mods.zip/file" target="_blank">YT Watch Time method</a>
@@ -210,19 +184,26 @@
        <a class="btn" href="https://www.mediafire.com/file/22y2z429nnttib5/EASY+PAYSA+🔥.apk/file target="_blank">Easypaisa Fake SS</a>
        <a class="btn" href="https://www.mediafire.com/file/z2y7xo76zbg1716/JAZCASH+🔥.apk/file target="_blank">Jazz Cash Fake SS</a>
        <a class="btn" href="https://www.mediafire.com/file/s0tjqme7rfptrrl/Create_Fake_Sms.apk/file target="_blank">Fake text msg</a>
+        </div>
     </div>
 
     <script>
-        function toggleSettings() {
-            var menu = document.getElementById("settingsMenu");
-            menu.style.display = menu.style.display === "block" ? "none" : "block";
-        }
-
-        function exitApp() {
-            if (confirm("Are you sure you want to exit?")) {
-                window.open('', '_self', ''); // Open a blank page
-                window.close(); // Close the current window
+        // Show popup if task is not completed
+        window.onload = function() {
+            if (localStorage.getItem("taskCompleted") === "true") {
+                document.getElementById("main-content").style.display = "block";
+            } else {
+                document.getElementById("popup").style.display = "block";
             }
+        };
+
+        // Close popup and save preference
+        function closePopup() {
+            if (document.getElementById("neverShowAgain").checked) {
+                localStorage.setItem("taskCompleted", "true");
+            }
+            document.getElementById("popup").style.display = "none";
+            document.getElementById("main-content").style.display = "block";
         }
     </script>
 
